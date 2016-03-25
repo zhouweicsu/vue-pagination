@@ -6,7 +6,10 @@
 </head>
 <body>
     <div id="demo">
-        <pagination total="1000" ></pagination>
+        请输入数据总数：<input type="text" v-model="total">
+        <pagination :total=total ></pagination>
+        请输入数据总数：<input type="text" v-model="total1">
+        <pagination :total=total1 ></pagination>
     </div>
     <script type="text/javascript" src="../../dist/js/pagination.js"></script>
 </div>

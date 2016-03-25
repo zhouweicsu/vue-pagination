@@ -5,9 +5,11 @@ pagination components for vue.js
 ```
 git clone git@github.com:zhouweicsu/vue-pagination.git
 
+cd vue-pagination
+
 npm3 install
 
 npm run server
 ```
 
-then open your browser, enter `http://localhost:9876`
+Open your browser, enter `http://localhost:9876/demo/pagination.html`
