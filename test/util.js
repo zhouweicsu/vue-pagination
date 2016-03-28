@@ -30,7 +30,6 @@ export default {
         configs = configs || {};
         configs.el = container;
         var vm = new Vue(configs);
-        //console.log(vm.$el.querySelector('.ui-pagination .pages').childNodes);
         return vm;
     },
 
@@ -39,8 +38,7 @@ export default {
      */
     destroyApp(vm) {
         var el = vm.$el;
-        vm.$destroy();
-        el.parentNode.removeChild(el);
+        vm.$destroy(true);
     },
 
     /**

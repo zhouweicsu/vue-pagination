@@ -20,13 +20,26 @@ describe('分页组件', function() {
             total: 20,
             uipage: 4, //页面未显示页码，但还得是 4 个
             ellipsis: 0
+        },{
+            total: 201,
+            pn: 2,
+            uipage: 13,
+            ellipsis: 0
+        },{
+            total: 260,
+            uipage: 15,
+            ellipsis: 0
+        },{
+            total: 261,
+            uipage: 15,
+            ellipsis: 1
         }];
         cases.forEach(function(item){
             (function(item){
                 var template, vm, el, totalbox, pagesbox;
                 var total = item.total || 1000,
                     pn = item.pn || 0,
-                    ps = item.ps || 0,
+                    ps = item.ps || 20,
                     pageSpan = item.pageSpan || 10;
                 it('setup test', function() {
                     template = `<pagination :total="total" :pn="pn" :ps="ps" :page-span="pageSpan"></pagination>`;
@@ -42,8 +55,6 @@ describe('分页组件', function() {
                         }
                     });
                     el = vm.$el;
-                    console.log(vm)
-                    console.log(el)
                     totalbox = el.querySelector('.ui-pagination .total');
                     pagesbox = el.querySelector('.ui-pagination .pages');
                     assert(true);
@@ -57,7 +68,6 @@ describe('分页组件', function() {
                 it('pages should match the specified a.ui-page number', function() {
                     var pages_list = pagesbox.querySelectorAll('a.ui-page');
                     var pages_array = util.filterInvisibleNode(util.nodeListToArray(pages_list));
-                    console.log(pages_array)
                     assert.equal(pages_array.length, item.uipage);
                 });
 
@@ -75,7 +85,7 @@ describe('分页组件', function() {
                 it('the last page should equal (1 + (total -1)/ps)', function() {
                     var lastPage = pagesbox.lastChild.previousSibling.dataset.page;
                     lastPage = (lastPage > 1) ? lastPage : 0;
-                    assert.equal(lastPage, (1 + (total -1)/ps));
+                    assert.equal(lastPage, Math.floor((total -1)/ps));
                 });
 
                 after(function(){
