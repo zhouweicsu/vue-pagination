@@ -33,6 +33,10 @@ describe('分页组件', function() {
             total: 261,
             uipage: 15,
             ellipsis: 1
+        },{
+            total: 1,
+            uipage: 4,
+            ellipsis: 0
         }];
         cases.forEach(function(item){
             (function(item){
@@ -77,15 +81,33 @@ describe('分页组件', function() {
                     assert.equal(ellipsis_array.length, item.ellipsis);
                 });
 
-                it('current page should match the specified page number', function() {
-                    var currentPage = pagesbox.querySelector('a.ui-page.current').dataset.page;
+                it('the current page should match the specified page number', function() {
+                    var currentPage = pagesbox.querySelector('a.ui-page.current').getAttribute('data-page');
                     assert.equal(currentPage, pn);
+                    var prePageClass = pagesbox.firstChild.className.indexOf('disabled');
+                    assert(prePageClass == ( pn==0 ? 8 : -1 ));
                 });
 
                 it('the last page should equal (1 + (total -1)/ps)', function() {
-                    var lastPage = pagesbox.lastChild.previousSibling.dataset.page;
+                    var lastPage = pagesbox.lastChild.previousSibling.getAttribute('data-page');
                     lastPage = (lastPage > 1) ? lastPage : 0;
                     assert.equal(lastPage, Math.floor((total -1)/ps));
+                });
+
+                it('click and chagne the current page', function() {
+                    if(total > 20){
+                        pagesbox.lastChild.click();
+                        setTimeout(function(){
+                            var currentPage = pagesbox.querySelector('a.ui-page.current').getAttribute('data-page');
+                            assert.equal(currentPage, pn+1);
+
+                            var prePageClass = pagesbox.firstChild.className.indexOf('disabled');
+                            assert(prePageClass > -1);
+                            done();
+                        },100);
+                    }else {
+                        assert(true);
+                    }
                 });
 
                 after(function(){

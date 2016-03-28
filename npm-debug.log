@@ -1,13 +1,16 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/local/bin/node4.2', '/usr/local/bin/npm', 'run', 'test' ]
+1 verbose cli [ '/usr/local/bin/node4.2',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'server' ]
 2 info using npm@2.7.4
 3 info using node@v4.2.1
-4 verbose run-script [ 'pretest', 'test', 'posttest' ]
-5 info pretest vue-pagination@1.0.0
-6 info test vue-pagination@1.0.0
+4 verbose run-script [ 'preserver', 'server', 'postserver' ]
+5 info preserver vue-pagination@1.0.0
+6 info server vue-pagination@1.0.0
 7 verbose unsafe-perm in lifecycle true
-8 info vue-pagination@1.0.0 Failed to exec test script
-9 verbose stack Error: vue-pagination@1.0.0 test: `./node_modules/karma/bin/karma start karma.conf.js`
+8 info vue-pagination@1.0.0 Failed to exec server script
+9 verbose stack Error: vue-pagination@1.0.0 server: `webpack-dev-server --port 9876 --host 0.0.0.0`
 9 verbose stack Exit status 1
 9 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:213:16)
 9 verbose stack     at emitTwo (events.js:87:13)
@@ -20,17 +23,17 @@
 10 verbose pkgid vue-pagination@1.0.0
 11 verbose cwd /home/zhouwei3-xy/vue-pagination
 12 error Linux 2.6.18-164.el5xen
-13 error argv "/usr/local/bin/node4.2" "/usr/local/bin/npm" "run" "test"
+13 error argv "/usr/local/bin/node4.2" "/usr/local/bin/npm" "run" "server"
 14 error node v4.2.1
 15 error npm  v2.7.4
 16 error code ELIFECYCLE
-17 error vue-pagination@1.0.0 test: `./node_modules/karma/bin/karma start karma.conf.js`
+17 error vue-pagination@1.0.0 server: `webpack-dev-server --port 9876 --host 0.0.0.0`
 17 error Exit status 1
-18 error Failed at the vue-pagination@1.0.0 test script './node_modules/karma/bin/karma start karma.conf.js'.
+18 error Failed at the vue-pagination@1.0.0 server script 'webpack-dev-server --port 9876 --host 0.0.0.0'.
 18 error This is most likely a problem with the vue-pagination package,
 18 error not with npm itself.
 18 error Tell the author that this fails on your system:
-18 error     ./node_modules/karma/bin/karma start karma.conf.js
+18 error     webpack-dev-server --port 9876 --host 0.0.0.0
 18 error You can get their info via:
 18 error     npm owner ls vue-pagination
 18 error There is likely additional logging output above.
